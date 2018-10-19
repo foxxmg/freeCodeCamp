@@ -78,3 +78,26 @@ The output of both of the above codes should be:
 ```c
 3
 ```
+
+#Addition of the Elvis Operator in GNU C.
+In C and C++ with GCC extensions, the second operand of the ternary operator is optional. 
+This has been the case since at least GCC 2.95.3
+The middle operand in a conditional expression may be omitted. 
+Then if the first operand is nonzero, its value is the value of the conditional expression.
+This ternary operator is specially called the Elvis operator.
+The following expression:
+
+```c
+x ? : y
+```
+
+has the value of x if that is nonzero; otherwise, the value of y. 
+The above expression gives the same result as
+
+```c
+x ? x : y
+```
+
+While in this simple case it may not be essentially useful to omit the middle operand, there are situations where becomes useful, when the first operand does, or may (if it is a macro argument), contain some side effect. 
+This implies that repeating the operand would have the side effect performed twice. 
+Omission of the middle operand uses the value already computed without the undesirable effects of recomputing it. 
